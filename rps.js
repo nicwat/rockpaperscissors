@@ -119,6 +119,9 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.paperRock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();
 			
 			
 		} else if (autoHand == 3) {
@@ -128,6 +131,9 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.rockScissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();
 			
 			
 		} else if (autoHand == 4) {
@@ -137,6 +143,9 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.rockLizard);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();
 			
 			
 		}else if (autoHand == 5) {
@@ -146,7 +155,9 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.spockRock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
-			
+			sleep(1000);
+			wipeScreen();
+			mainMenu();
 			
 		}else {
 			console.log(userMessages.badInput);
