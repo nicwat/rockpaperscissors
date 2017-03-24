@@ -70,7 +70,7 @@ var mainMenu = function() {
 
 
 var outcomeMessages = {
-	scissorspaper: "Scissors cuts paper!", 
+	scissorsPaper: "Scissors cuts paper!", 
 	paperRock: "Paper covers rock!",
 	rockLizard: "Rock crushes lizard!",
 	lizardSpock: "Lizard poisons Spock!", 
@@ -104,14 +104,23 @@ var initializeGame = function () {
 	var userHand = sget("Choose a hand to throw (enter name, initial, or number):\n 1. (R)OCK\n 2. (P)APER\n 3. SCISSO(R)S\n 4. (L)IZARD\n 5. SPOC(K)").trim();
 	userHandLC = userHand.toLowerCase();
 	if (userHandLC == 1 || userHandLC == "rock" || userHandLC == "r") {
-		console.log ("You have chosen rock.");
+		rockOptions();
+	} else if (userHandLC == 2 || userHandLC == "paper" || userHandLC == "p") {
+		paperOptions();
+	}
+};
+
+var rockOptions = function () {
+	console.log ("You have chosen rock.");
 	var autoHand = Math.floor((Math.random() * 5) + 1);
 		if (autoHand == 1) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.rock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
-			
+			sleep(1000);
+			wipeScreen();
+			mainMenu();			
 		} else if (autoHand == 2) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.paper);
@@ -121,9 +130,7 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.lose);
 			sleep(1000);
 			wipeScreen();
-			mainMenu();
-			
-			
+			mainMenu();			
 		} else if (autoHand == 3) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.scissors);
@@ -133,9 +140,7 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.win);
 			sleep(1000);
 			wipeScreen();
-			mainMenu();
-			
-			
+			mainMenu();		
 		} else if (autoHand == 4) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.lizard);
@@ -145,9 +150,7 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.win);
 			sleep(1000);
 			wipeScreen();
-			mainMenu();
-			
-			
+			mainMenu();	
 		}else if (autoHand == 5) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.spock);
@@ -157,16 +160,70 @@ var initializeGame = function () {
 			console.log("\n" + outcomeMessages.lose);
 			sleep(1000);
 			wipeScreen();
-			mainMenu();
-			
+			mainMenu();	
 		}else {
 			console.log(userMessages.badInput);
 			initializeGame();
 		}
-	}
-};
+	};
 
 
+var paperOptions = function () {
+	console.log ("You have chosen paper.");
+	var autoHand = Math.floor((Math.random() * 5) + 1);
+		if (autoHand == 1) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.rock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.paperRock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();			
+		} else if (autoHand == 2) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.paper);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.tie);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();			
+		} else if (autoHand == 3) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.scissors);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.scissorsPaper);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();		
+		} else if (autoHand == 4) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.lizard);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lizardPaper);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();	
+		}else if (autoHand == 5) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.spock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.paperSpock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();	
+		}else {
+			console.log(userMessages.badInput);
+			initializeGame();
+		}
+	};
 
 
 
