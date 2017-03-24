@@ -28,6 +28,10 @@ var wipeScreen = function () {
     }
 };
 
+var wins = 0;
+var losses = 0;
+var ties = 0;
+
 
 
 var mainMenuPrompts = { 
@@ -60,10 +64,13 @@ var mainMenu = function() {
         initializeGame();
     } else if(userSelection.toLowerCase() == "score" || userSelection == 2) {
         viewScore();
+        var returnToMenu = sget ("Press any key to return to main menu").trim();
+        mainMenu();
     } else if(userSelection.toLowerCase() == "exit" || userSelection == 3) {
         exit();
     } else {
       console.log(userMessages.badInput);
+      sleep(2000);
       mainMenu();
 	}
 };
@@ -101,7 +108,8 @@ var opponentMessages = {
 
 
 var initializeGame = function () {
-	var userHand = sget("Choose a hand to throw (enter name, initial, or number):\n 1. (R)OCK\n 2. (P)APER\n 3. S(C)ISSORS\n 4. (L)IZARD\n 5. SPOC(K)").trim();
+	viewScore();
+	var userHand = sget("Choose a hand to throw (enter name, initial, or number):\n 1. (R)OCK\n 2. (P)APER\n 3. S(C)ISSORS\n 4. (L)IZARD\n 5. SPOC(K)\n\nType (B)ack to return to main menu.\n").trim();
 	userHandLC = userHand.toLowerCase();
 	if (userHandLC == 1 || userHandLC == "rock" || userHandLC == "r") {
 		rockOptions();
@@ -111,8 +119,16 @@ var initializeGame = function () {
 		scissorsOptions();
 	} else if (userHandLC == 4 || userHandLC == "lizard" || userHandLC == "l") {
 		lizardOptions();
-	} else if (userHandLC == 5 || userHandLC == "spock" || userHandLC == "k")
+	} else if (userHandLC == 5 || userHandLC == "spock" || userHandLC == "k") {
 		spockOptions();
+	} else if (userHandLC == "back" || userHandLC == "b") {
+		mainMenu();
+	} else {
+		console.log(userMessages.badInput);
+		sleep(2000);
+		wipeScreen();
+		initializeGame();
+	}
 };
 
 var rockOptions = function () {
@@ -123,6 +139,7 @@ var rockOptions = function () {
 			console.log("\n" + opponentMessages.rock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
+			ties++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -133,6 +150,7 @@ var rockOptions = function () {
 			console.log("\n" + outcomeMessages.paperRock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -143,6 +161,7 @@ var rockOptions = function () {
 			console.log("\n" + outcomeMessages.rockScissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();		
@@ -153,6 +172,7 @@ var rockOptions = function () {
 			console.log("\n" + outcomeMessages.rockLizard);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -163,6 +183,7 @@ var rockOptions = function () {
 			console.log("\n" + outcomeMessages.spockRock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -183,6 +204,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.paperRock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -191,6 +213,7 @@ var paperOptions = function () {
 			console.log("\n" + opponentMessages.paper);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
+			ties++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -201,6 +224,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.scissorsPaper);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();		
@@ -211,6 +235,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.lizardPaper);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -221,6 +246,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.paperSpock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -240,6 +266,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.rockScissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -250,6 +277,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.scissorsPaper);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -258,6 +286,7 @@ var paperOptions = function () {
 			console.log("\n" + opponentMessages.scissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
+			ties++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();		
@@ -268,6 +297,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.scissorsLizard);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -278,6 +308,7 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.spockScissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -296,6 +327,7 @@ var lizardOptions = function () {
 			console.log("\n" + outcomeMessages.rockLizard);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -306,6 +338,7 @@ var lizardOptions = function () {
 			console.log("\n" + outcomeMessages.lizardPaper);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -316,6 +349,7 @@ var lizardOptions = function () {
 			console.log("\n" + outcomeMessages.scissorsLizard);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();		
@@ -324,6 +358,7 @@ var lizardOptions = function () {
 			console.log("\n" + opponentMessages.lizard);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
+			ties++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -334,6 +369,7 @@ var lizardOptions = function () {
 			console.log("\n" + outcomeMessages.lizardSpock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -352,6 +388,7 @@ var spockOptions = function () {
 			console.log("\n" + outcomeMessages.spockRock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -362,6 +399,7 @@ var spockOptions = function () {
 			console.log("\n" + outcomeMessages.paperSpock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();			
@@ -372,6 +410,7 @@ var spockOptions = function () {
 			console.log("\n" + outcomeMessages.spockScissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			wins++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();		
@@ -382,6 +421,7 @@ var spockOptions = function () {
 			console.log("\n" + outcomeMessages.lizardSpock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			losses++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -390,6 +430,7 @@ var spockOptions = function () {
 			console.log("\n" + opponentMessages.spock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
+			ties++;
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
@@ -406,7 +447,9 @@ var spockOptions = function () {
 
 
 
-var viewScore = function () {};
+var viewScore = function () {
+	console.log("Current Record: " + wins + "-" + losses + "-" +ties);
+};
 
 
 
