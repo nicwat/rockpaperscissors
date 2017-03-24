@@ -87,7 +87,7 @@ var opponentMessages = {
 	paper: "Your opponent chooses paper.",
 	scissors: "Your opponent chooses scissors.",
 	lizard: "Your opponent chooses lizard.",
-	spock: "Your opponent chooses Spock"
+	spock: "Your opponent chooses Spock."
 };
 
 var initializeGame = function () {
