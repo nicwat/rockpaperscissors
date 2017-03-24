@@ -1,9 +1,3 @@
-// user must make a selection
-// computer must create random responses
-// user should be notified of outcome and given opportunity to play again
-// user should be told how they won/lost
-
-
 var sget = require("sget");
 
 var sleep = function(milliseconds) {
@@ -19,9 +13,6 @@ var wipeScreen = function () {
   return process.stdout.write('\033c');
 };
 
-
-
-
  var printMenu = function() {
     for (var key in mainMenuPrompts) {
       console.log(mainMenuPrompts[key]);
@@ -31,7 +22,6 @@ var wipeScreen = function () {
 var wins = 0;
 var losses = 0;
 var ties = 0;
-
 
 
 var mainMenuPrompts = { 
@@ -44,6 +34,7 @@ var mainMenuPrompts = {
                         score: "Enter 'Score' or '2' to see current score ",                    
                         exit: "Enter 'Exit' or '3' to exit the game\n"
                       };
+
 
  var userMessages = {
  	handShape: "Enter your choice: Rock, Paper, Scissors, Lizard, Spock",
@@ -75,7 +66,6 @@ var mainMenu = function() {
 	}
 };
 
-
 var outcomeMessages = {
 	scissorsPaper: "Scissors cuts paper!", 
 	paperRock: "Paper covers rock!",
@@ -99,13 +89,6 @@ var opponentMessages = {
 	lizard: "Your opponent chooses lizard.",
 	spock: "Your opponent chooses Spock"
 };
-
-
-
-
-
-
-
 
 var initializeGame = function () {
 	viewScore();
@@ -191,9 +174,7 @@ var rockOptions = function () {
 			console.log(userMessages.badInput);
 			initializeGame();
 		}
-	};
-
-
+};
 var paperOptions = function () {
 	console.log ("You have chosen paper.");
 	var autoHand = Math.floor((Math.random() * 5) + 1);
@@ -254,9 +235,8 @@ var paperOptions = function () {
 			console.log(userMessages.badInput);
 			initializeGame();
 		}
-	};
-
-	var scissorsOptions = function () {
+};
+var scissorsOptions = function () {
 	console.log ("You have chosen scissors.");
 	var autoHand = Math.floor((Math.random() * 5) + 1);
 		if (autoHand == 1) {
@@ -316,7 +296,7 @@ var paperOptions = function () {
 			console.log(userMessages.badInput);
 			initializeGame();
 		}
-	};
+};
 var lizardOptions = function () {
 	console.log ("You have chosen lizard.");
 	var autoHand = Math.floor((Math.random() * 5) + 1);
@@ -377,7 +357,7 @@ var lizardOptions = function () {
 			console.log(userMessages.badInput);
 			initializeGame();
 		}
-	};
+};
 var spockOptions = function () {
 	console.log ("You have chosen Spock.");
 	var autoHand = Math.floor((Math.random() * 5) + 1);
@@ -438,20 +418,11 @@ var spockOptions = function () {
 			console.log(userMessages.badInput);
 			initializeGame();
 		}
-	};
-
-
-
-
-
-
-
+};
 
 var viewScore = function () {
 	console.log("Current Record: " + wins + "-" + losses + "-" +ties);
 };
-
-
 
 var exit = function() {
   console.log(userMessages.exit);
