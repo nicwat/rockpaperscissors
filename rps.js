@@ -101,14 +101,17 @@ var opponentMessages = {
 
 
 var initializeGame = function () {
-	var userHand = sget("Choose a hand to throw (enter name, initial, or number):\n 1. (R)OCK\n 2. (P)APER\n 3. SCISSO(R)S\n 4. (L)IZARD\n 5. SPOC(K)").trim();
+	var userHand = sget("Choose a hand to throw (enter name, initial, or number):\n 1. (R)OCK\n 2. (P)APER\n 3. S(C)ISSORS\n 4. (L)IZARD\n 5. SPOC(K)").trim();
 	userHandLC = userHand.toLowerCase();
 	if (userHandLC == 1 || userHandLC == "rock" || userHandLC == "r") {
 		rockOptions();
 	} else if (userHandLC == 2 || userHandLC == "paper" || userHandLC == "p") {
 		paperOptions();
-	} else if  (userHandLC == 3 || userHandLC == "scissors" || userHandLC == "s")
+	} else if  (userHandLC == 3 || userHandLC == "scissors" || userHandLC == "c"){
 		scissorsOptions();
+	} else if (userHandLC == 4 || userHandLC == "lizard" || userHandLC == "l") {
+		lizardOptions();
+	}
 };
 
 var rockOptions = function () {
@@ -274,6 +277,62 @@ var paperOptions = function () {
 			console.log("\n" + outcomeMessages.spockScissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();	
+		} else {
+			console.log(userMessages.badInput);
+			initializeGame();
+		}
+	};
+var lizardOptions = function () {
+	console.log ("You have chosen lizard.");
+	var autoHand = Math.floor((Math.random() * 5) + 1);
+		if (autoHand == 1) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.rock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.rockLizard);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();			
+		} else if (autoHand == 2) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.paper);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lizardPaper);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();			
+		} else if (autoHand == 3) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.scissors);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.scissorsLizard);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();		
+		} else if (autoHand == 4) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.lizard);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.tie);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();	
+		} else if (autoHand == 5) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.spock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lizardSpock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
