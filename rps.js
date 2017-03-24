@@ -111,7 +111,8 @@ var initializeGame = function () {
 		scissorsOptions();
 	} else if (userHandLC == 4 || userHandLC == "lizard" || userHandLC == "l") {
 		lizardOptions();
-	}
+	} else if (userHandLC == 5 || userHandLC == "spock" || userHandLC == "k")
+		spockOptions();
 };
 
 var rockOptions = function () {
@@ -333,6 +334,62 @@ var lizardOptions = function () {
 			console.log("\n" + outcomeMessages.lizardSpock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();	
+		} else {
+			console.log(userMessages.badInput);
+			initializeGame();
+		}
+	};
+var spockOptions = function () {
+	console.log ("You have chosen Spock.");
+	var autoHand = Math.floor((Math.random() * 5) + 1);
+		if (autoHand == 1) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.rock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.spockRock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();			
+		} else if (autoHand == 2) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.paper);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.paperSpock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();			
+		} else if (autoHand == 3) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.scissors);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.spockScissors);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();		
+		} else if (autoHand == 4) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.lizard);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lizardSpock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			sleep(1000);
+			wipeScreen();
+			mainMenu();	
+		} else if (autoHand == 5) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.spock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.tie);
 			sleep(1000);
 			wipeScreen();
 			mainMenu();	
