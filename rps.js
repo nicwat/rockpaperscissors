@@ -91,7 +91,6 @@ var opponentMessages = {
 };
 
 var initializeGame = function () {
-	viewScore();
 	var userHand = sget("Choose a hand to throw (enter name, initial, or number):\n 1. (R)OCK\n 2. (P)APER\n 3. S(C)ISSORS\n 4. (L)IZARD\n 5. SPOC(K)\n\nType (B)ack to return to main menu.\n").trim();
 	userHandLC = userHand.toLowerCase();
 	if (userHandLC == 1 || userHandLC == "rock" || userHandLC == "r") {
@@ -114,6 +113,15 @@ var initializeGame = function () {
 	}
 };
 
+var postGameDisplay = function () {
+	sleep(1000);
+	viewScore();
+	sleep(2000);
+	wipeScreen();
+	mainMenu();	
+
+};
+
 var rockOptions = function () {
 	console.log ("You have chosen rock.");
 	var autoHand = Math.floor((Math.random() * 5) + 1);
@@ -123,9 +131,7 @@ var rockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
 			ties++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();		
 		} else if (autoHand == 2) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.paper);
@@ -134,9 +140,7 @@ var rockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();			
 		} else if (autoHand == 3) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.scissors);
@@ -145,9 +149,7 @@ var rockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();		
+			postGameDisplay();		
 		} else if (autoHand == 4) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.lizard);
@@ -156,9 +158,7 @@ var rockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else if (autoHand == 5) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.spock);
@@ -167,9 +167,7 @@ var rockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else {
 			console.log(userMessages.badInput);
 			initializeGame();
@@ -186,18 +184,14 @@ var paperOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();			
 		} else if (autoHand == 2) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.paper);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
 			ties++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();			
 		} else if (autoHand == 3) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.scissors);
@@ -206,9 +200,7 @@ var paperOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();		
+			postGameDisplay();		
 		} else if (autoHand == 4) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.lizard);
@@ -217,9 +209,7 @@ var paperOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else if (autoHand == 5) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.spock);
@@ -228,9 +218,7 @@ var paperOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else {
 			console.log(userMessages.badInput);
 			initializeGame();
@@ -247,9 +235,7 @@ var scissorsOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();			
 		} else if (autoHand == 2) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.paper);
@@ -258,18 +244,14 @@ var scissorsOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();			
 		} else if (autoHand == 3) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.scissors);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
 			ties++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();		
+			postGameDisplay();		
 		} else if (autoHand == 4) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.lizard);
@@ -278,9 +260,7 @@ var scissorsOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else if (autoHand == 5) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.spock);
@@ -289,9 +269,7 @@ var scissorsOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else {
 			console.log(userMessages.badInput);
 			initializeGame();
@@ -308,9 +286,7 @@ var lizardOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();			
 		} else if (autoHand == 2) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.paper);
@@ -319,9 +295,7 @@ var lizardOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();			
 		} else if (autoHand == 3) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.scissors);
@@ -330,18 +304,14 @@ var lizardOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();		
+			postGameDisplay();			
 		} else if (autoHand == 4) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.lizard);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
 			ties++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();
 		} else if (autoHand == 5) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.spock);
@@ -350,9 +320,7 @@ var lizardOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else {
 			console.log(userMessages.badInput);
 			initializeGame();
@@ -369,9 +337,7 @@ var spockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();				
 		} else if (autoHand == 2) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.paper);
@@ -380,9 +346,7 @@ var spockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();			
+			postGameDisplay();				
 		} else if (autoHand == 3) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.scissors);
@@ -391,9 +355,7 @@ var spockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.win);
 			wins++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();		
+			postGameDisplay();			
 		} else if (autoHand == 4) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.lizard);
@@ -402,18 +364,14 @@ var spockOptions = function () {
 			sleep(1000);
 			console.log("\n" + outcomeMessages.lose);
 			losses++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();	
 		} else if (autoHand == 5) {
 			sleep(1000);
 			console.log("\n" + opponentMessages.spock);
 			sleep(1000);
 			console.log("\n" + outcomeMessages.tie);
 			ties++;
-			sleep(1000);
-			wipeScreen();
-			mainMenu();	
+			postGameDisplay();
 		} else {
 			console.log(userMessages.badInput);
 			initializeGame();
