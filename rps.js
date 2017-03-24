@@ -79,11 +79,90 @@ var outcomeMessages = {
 	lizardPaper: "Lizard eats paper!",
 	paperSpock: "Paper disproves Spock!",
 	spockRock: "Spock vaporizes rock!",
-	rockScissors: "Rock crushes scissors!"
+	rockScissors: "Rock crushes scissors!",
+	tie: "Tie game!",
+	win: "You win!",
+	lose: "You lose!"
+};
+
+var opponentMessages = {
+	rock: "Your opponent chooses rock.",
+	paper: "Your opponent chooses paper.",
+	scissors: "Your opponent chooses scissors.",
+	lizard: "Your opponent chooses lizard.",
+	spock: "Your opponent chooses Spock"
 };
 
 
-var initializeGame = function () {};
+
+
+
+
+
+
+var initializeGame = function () {
+	var userHand = sget("Choose a hand to throw (enter name, initial, or number):\n 1. (R)OCK\n 2. (P)APER\n 3. SCISSO(R)S\n 4. (L)IZARD\n 5. SPOC(K)").trim();
+	userHandLC = userHand.toLowerCase();
+	if (userHandLC == 1 || userHandLC == "rock" || userHandLC == "r") {
+		console.log ("You have chosen rock.");
+	var autoHand = Math.floor((Math.random() * 5) + 1);
+		if (autoHand == 1) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.rock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.tie);
+			
+		} else if (autoHand == 2) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.paper);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.paperRock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			
+			
+		} else if (autoHand == 3) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.scissors);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.rockScissors);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
+			
+			
+		} else if (autoHand == 4) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.lizard);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.rockLizard);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.win);
+			
+			
+		}else if (autoHand == 5) {
+			sleep(1000);
+			console.log("\n" + opponentMessages.spock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.spockRock);
+			sleep(1000);
+			console.log("\n" + outcomeMessages.lose);
+			
+			
+		}else {
+			console.log(userMessages.badInput);
+			initializeGame();
+		}
+	}
+};
+
+
+
+
+
+
+
+
+
 var viewScore = function () {};
 
 
